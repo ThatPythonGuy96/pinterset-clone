@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block title %} - Home{% endblock %}
+
+{% block body %}
+    <main role="main">
+		<section class="mt-4 mb-5">
+			<div class="container mb-4">
+				<h1 class="font-weight-bold title">Explore</h1>
+				<div class="row">
+					<nav class="navbar navbar-expand-lg navbar-light bg-white pl-2 pr-2">
+					<button class="navbar-light navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExplore" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarsExplore">
+						<ul class="navbar-nav">
+							{% for tag in tags %}
+								<li class="nav-item">
+									<a class="nav-link" href="{% url 'post:tag' tag=tag.pk %}">{{tag.tag}}</a>
+								</li>
+							{% endfor %}
+							<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More</a>
+							<div class="dropdown-menu shadow-lg" aria-labelledby="dropdown01">
+								{% for tag in other_tags %}
+									<a class="dropdown-item" href="{% url 'post:tag' tag=tag.pk %}">{{tag.tag}}</a>
+								{% endfor %}
+							</div>
+							</li>
+						</ul>
+					</div>
+					</nav>
+				</div>
+			</div>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="card-columns">
+						{% for pin in pins %}								
+							<div class="card card-pin">
+								<a href="{% url 'post:detail' pin.pk %}">
+									<img class="card-img" src="{{pin.pin.url}}" alt="Card image">
+								</a>
+								<div class="overlay">
+									<h2 class="card-title title">{{pin.description}}</h2>
+									<div class="more">
+										<a href="">
+											<i class="fa-regular fa-bookmark"></i>
+										</a>
+										<a href="{% url 'post:detail' pin.pk %}">
+											<i class="fa-solid fa-arrow-right"></i> More 
+										</a>
+									</div>
+								</div>
+							</div>							
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</section>
+    </main>
+{% endblock %}

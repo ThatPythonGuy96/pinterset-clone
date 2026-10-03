@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivid {% block title %}{% endblock %}</title>
+    {% load static %}
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/all.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/theme.css' %}">
+    <script type="text/javascript" src="{% static 'js/all.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/theme.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+</head>
+<body>
+    {% include 'nav.html' %}
+    {% block body %}
+    {% endblock %}
+    
+    <footer class="footer pt-2 pb-2 text-center" style="border-top: 1px solid #343a40 !important;">   
+        <div class="container">
+            <div class="socials-media">
+            <ul class="list-unstyled" style="margin-bottom: 3px !important;">
+                <li class="d-inline-block ml-1 mr-1">
+                    <a href="#" class="text-dark"><i class="fa-brands fa-facebook-f"></i></a>
+                </li>
+                <li class="d-inline-block ml-1 mr-1">
+                    <a href="#" class="text-dark"><i class="fa-brands fa-x-twitter"></i></a>
+                </li>
+                <li class="d-inline-block ml-1 mr-1">
+                    <a href="#" class="text-dark"><i class="fa-brands fa-instagram"></i></a>
+                </li>
+                <li class="d-inline-block ml-1 mr-1">
+                    <a href="#" class="text-dark"><i class="fa-brands fa-dribbble"></i></a>
+                </li>
+            </ul>
+            </div>
+        </div>
+    </footer> 
+</body>
+</html>

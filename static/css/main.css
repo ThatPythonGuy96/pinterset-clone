@@ -1,0 +1,11 @@
+.main {
+    background-color: violet;
+}
+.author-pic {
+    border: 2px solid red;
+}
+.author-cover {
+    height: 302px;
+    width: 100%;
+    object-fit: cover;
+}

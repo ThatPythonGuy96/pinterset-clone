@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %} - {{board.name}}{% endblock %}
+
+{% block body %}   
+    <main role="main">  
+        {% for picture in board %}
+            <div class="container-fluid mb-5">
+                <div class="row">
+                    <b>{{picture.name|capfirst}}</b>
+                    <div class="card-columns">
+                        {% for item in picture.pin.all %}                        
+                            <a href="{% url 'post:detail' picture.pk %}">
+                                <div class="card card-pin">
+                                    <img class="card-img" src="{{ item.pin.url }}" alt="Card image">
+                                    <div class="overlay">
+                                        <h2 class="card-title title">{{picture.description}}</h2>
+                                        <div class="more">
+                                            <a href="">
+                                                <i class="fa-regular fa-bookmark"></i>
+                                            </a>
+                                            <a href="{% url 'post:detail' picture.pk %}">
+                                                <i class="fa-solid fa-arrow-right"></i> More 
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </main>
+{% endblock %}

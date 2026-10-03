@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %} - {{user.username}}{% endblock %}
+
+{% block body %}   
+    <main role="main">  
+		<div class="jumbotron border-round-0 min-50vh pt-1"> <img src="{{user.cover_pic.url}}" alt="" class="author-cover"> 
+		</div>
+		<div class="container mb-4 mt-neg80">
+			<img src="{{ user.profile_pic.url }}" class="mt-neg100 mb-4 rounded-circle author-pic" width="128">
+			<h1 class="font-weight-bold title">{{user.username|capfirst}}</h1>
+			<p>
+				{{user.bio}}
+			</p>
+		</div>
+		<div class="container-fluid mb-5">
+			<div class="row">
+				<div class="card-columns">
+					{% for picture in pictures %}
+						<a href="{% url 'post:detail' picture.pk %}">
+							<div class="card card-pin">
+								<img class="card-img" src="{{ picture.pin.url }}" alt="Card image">
+								<div class="overlay">
+									<h2 class="card-title title">{{picture.description}}</h2>
+									<div class="more">
+										<a href="">
+											<i class="fa-regular fa-bookmark"></i>
+										</a>
+										<a href="{% url 'post:detail' picture.pk %}">
+											<i class="fa-solid fa-arrow-right"></i> More 
+										</a>
+									</div>
+								</div>
+							</div>
+						</a>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+
+		<h1 class="font-weight-bold title d-flex justify-content-center">Your Board</h1>
+		<div class="container-fluid mb-5">
+			<div class="row">
+				<div class="card-columns">
+					{% for board in boards %}
+						<a href="{% url 'post:board' board.name %}">
+							<div class="card card-pin">
+								{% for image in board.pin.all|slice:":1" %}
+									<img class="card-img" src="{{ image.pin.url }}" alt="Card image">
+								{% endfor %}
+								<span class="font-weight-bold d-flex justify-content-center">{{board.name|capfirst}}</span>
+							</div>
+						</a>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+    </main>
+{% endblock %}
