@@ -12,7 +12,7 @@ python manage.py migrate --no-input
 
 echo "=== Creating initial data ==="
 python manage.py shell << END
-from users.models import User
+from user.models import User
 import os
 
 user, _ = User.objects.get_or_create(
