@@ -1,4 +1,3 @@
-from turtle import mode
 from django.db import models
 import os
 from PIL import Image
